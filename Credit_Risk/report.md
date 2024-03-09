@@ -1,32 +1,21 @@
-# Module 12 Report Template
-
 ## Overview of the Analysis
 
+In this challenge for my data analytics bootcamp, I'm using various techniques to train and evaluate a model based on loan risk, using historical lending activity. The purpose is to build and test a model that can identify credit risk. 
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
-
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
-
-## Results
-
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
-
-* Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
+**1. Without RandomOverSampler:** 
+-**Accuracy:** For healthy performing loans the accuracy is 100%. For loans in default the accuracy is 88%. 
+-**Precision:** For healthy loans the precision is 100%. For loans in default the precision is 87%.
+-**Recall:** For healthy loans the loans the recall is 100%. For loans in default the recall is 89%. 
+-**Summary:** 
+The model has 100% accuracy in predicting healthy loan performance. It correctly identifies true high risk loans 95% of the time. The precision is a bit lower though at 87% suggesting that the model is some what more likely to classify a healthy loan as high risk. 
 
 
+**2. With RandomOverSampler:**
+-**Accuracy:** For healthy performing loans the accuracy is 100%. For loans in default the accuracy is 93%. 
+-**Precision:** For healthy loans the precision is 100%. For loans in default the precision is 87%.
+-**Recall:** For healthy loans the loans the recall is 100%. For loans in default the recall is 100%. 
+-**Summary:** 
+Using oversampling the recall for high risk loans increased to 100% while the precision remained at 87%. The overall f1-score improved to 93%. Oversampling has yielded better results. 
 
-* Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
-
-## Summary
-
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
-
-If you do not recommend any of the models, please justify your reasoning.
+**3. Recommendations:**
+While the random oversampling increased the recall for loans in default and the overall model accuracy, I would not recommend the model without human supervision. One reason is because the cost of lending mistakes is high. False negatives at 13% represent potential customers who may be declined unfairly, especially if there is bias in the trianing data. I would also recommend further training and testing on larger and more diverse datasets. How representative of the whole does this dataset represent? More testing would be needed. 
